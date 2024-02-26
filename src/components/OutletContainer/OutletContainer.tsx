@@ -1,6 +1,12 @@
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 
+const NAV_LINKS = [
+  { label: "theremin", link: "/" },
+  { label: "color flow", link: "/color-flow" },
+  { label: "mousemove", link: "/theremin-mousemove" },
+];
+
 export const OutletContainer = ({ children }: { children: ReactNode }) => {
   return (
     <div className="pt-6 flex flex-col items-center gap-8 mx-2">
@@ -19,27 +25,21 @@ const Navbar = () => {
 
   return (
     <div className="p-4 bg-white shadow-md rounded-xl flex items-center fixed bottom-5 sm:bottom-20 gap-4">
-      <NavLink
-        to="/"
-        className={({ isActive }) => {
-          return `${
-            isActive ? "!bg-indigo-500 text-white" : "text-slate-500"
-          } ${cn}`;
-        }}
-      >
-        flow
-      </NavLink>
-
-      <NavLink
-        className={({ isActive }) => {
-          return `${
-            isActive ? "!bg-indigo-500 text-white" : "text-slate-500"
-          } ${cn}`;
-        }}
-        to="/theremin-mousemove"
-      >
-        mousemove
-      </NavLink>
+      {NAV_LINKS.map(({ label, link }) => {
+        return (
+          <NavLink
+            key={label}
+            to={link}
+            className={({ isActive }) => {
+              return `${
+                isActive ? "!bg-indigo-500 text-white" : "text-slate-500"
+              } ${cn}`;
+            }}
+          >
+            {label}
+          </NavLink>
+        );
+      })}
     </div>
   );
 };
