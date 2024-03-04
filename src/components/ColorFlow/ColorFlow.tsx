@@ -1,6 +1,7 @@
-import ReactFlow, { NodeTypes } from "reactflow";
+import ReactFlow, { NodeTypes, ReactFlowProvider } from "reactflow";
 import { IStore, useStore } from "./store/store";
 import { RGBnode } from "./nodes/RGBnode";
+import { ColorOut } from "./nodes/ColorOut";
 
 const selector = (state: IStore) => ({
   nodes: state.nodes,
@@ -12,6 +13,7 @@ const selector = (state: IStore) => ({
 
 const nodeTypes: NodeTypes = {
   colorValue: RGBnode,
+  colorOut: ColorOut,
 };
 
 export const ColorFlow = () => {
@@ -19,14 +21,16 @@ export const ColorFlow = () => {
     useStore(selector);
 
   return (
-    <ReactFlow
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      nodeTypes={nodeTypes}
-      fitView
-    />
+    <ReactFlowProvider>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onConnect={onConnect}
+        nodeTypes={nodeTypes}
+        fitView
+      />
+    </ReactFlowProvider>
   );
 };

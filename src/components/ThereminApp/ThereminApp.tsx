@@ -4,6 +4,7 @@ import ReactFlow, {
   MiniMap,
   NodeTypes,
   Panel,
+  ReactFlowProvider,
 } from "reactflow";
 import { IStore, useStore } from "./store/store";
 import { Osc } from "./nodes/Osc";
@@ -34,39 +35,41 @@ export const ThereminApp = () => {
   const store = useStore(selector);
 
   return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <ReactFlow
-        nodes={store.nodes}
-        edges={store.edges}
-        onNodesChange={store.onNodesChange}
-        onEdgesChange={store.onEdgesChange}
-        onConnect={store.addEdge}
-        onNodesDelete={store.onNodesDelete}
-        onEdgesDelete={store.onEdgesDelete}
-        nodeTypes={nodeTypes}
-        fitView
-      >
-        <Panel position="top-right">
-          <span className="flex gap-3">
-            <button
-              className="p-4 bg-fuchsia-500 rounded-lg text-white font-bold border-2 border-slate-600"
-              onClick={() => store.createOscNode()}
-            >
-              osc +
-            </button>
-            <button
-              className="p-4 bg-indigo-500 rounded-lg text-white font-bold border-2 border-slate-600"
-              onClick={() => store.createAmpNode()}
-            >
-              amp +
-            </button>
-          </span>
-        </Panel>
+    <ReactFlowProvider>
+      <div style={{ width: "100%", height: "100%" }}>
+        <ReactFlow
+          nodes={store.nodes}
+          edges={store.edges}
+          onNodesChange={store.onNodesChange}
+          onEdgesChange={store.onEdgesChange}
+          onConnect={store.addEdge}
+          onNodesDelete={store.onNodesDelete}
+          onEdgesDelete={store.onEdgesDelete}
+          nodeTypes={nodeTypes}
+          fitView
+        >
+          <Panel position="top-right">
+            <span className="flex gap-3">
+              <button
+                className="p-4 bg-fuchsia-500 rounded-lg text-white font-bold border-2 border-slate-600"
+                onClick={() => store.createOscNode()}
+              >
+                osc +
+              </button>
+              <button
+                className="p-4 bg-indigo-500 rounded-lg text-white font-bold border-2 border-slate-600"
+                onClick={() => store.createAmpNode()}
+              >
+                amp +
+              </button>
+            </span>
+          </Panel>
 
-        <Background />
-        <Controls />
-        <MiniMap />
-      </ReactFlow>
-    </div>
+          <Background />
+          <Controls />
+          <MiniMap />
+        </ReactFlow>
+      </div>
+    </ReactFlowProvider>
   );
 };

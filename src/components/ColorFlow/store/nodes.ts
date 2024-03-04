@@ -23,6 +23,24 @@ export const nodes: Node[] = [
     id: "4",
     type: "colorValue",
     data: { value: 50 },
-    position: { x: -50, y: 250 },
+    position: { x: -50, y: 200 },
+  },
+  {
+    id: "21ds4",
+    type: "colorValue",
+    data: { value: 50 },
+    position: { x: -50, y: 270 },
+  },
+  {
+    id: "4fdsds",
+    type: "colorValue",
+    data: { value: 50 },
+    position: { x: -50, y: 340 },
+  },
+  {
+    id: "43413",
+    type: "colorOut",
+    data: {},
+    position: { x: 170, y: 270 },
   },
 ];

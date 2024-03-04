@@ -12,6 +12,8 @@ const selector = (id: string) => (store: IStore) => {
     changeColor: (e: e) => {
       store.updateNodeColor(id, +e.target.value);
     },
+    edges: store.edges,
+    nodes: store.nodes,
   };
 };
 
