@@ -3,6 +3,7 @@ import { App } from "../App";
 import { ThereminApp } from "../components/ThereminApp/ThereminApp";
 import { ThereminWithMouseApp } from "../components/ThereminWithMouseApp/ThereminWithMouseApp";
 import { ErrorElement } from "../components/ErrorElement/ErrorElement";
+import { ColorFlow } from "../components/ColorFlow/ColorFlow";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <ThereminApp />,
+      },
+      {
+        path: "/color-flow",
+        element: <ColorFlow />,
       },
       {
         path: "/theremin-mousemove",
